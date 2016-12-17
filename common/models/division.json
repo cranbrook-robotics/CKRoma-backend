@@ -1,0 +1,32 @@
+{
+  "name": "Division",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "gradeRange": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "organization": {
+      "type": "belongsTo",
+      "model": "Organization",
+      "foreignKey": ""
+    },
+    "teams": {
+      "type": "hasMany",
+      "model": "Team",
+      "foreignKey": ""
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

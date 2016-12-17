@@ -1,0 +1,16 @@
+{
+  "db": {
+    "name": "db",
+    "connector": "memory"
+  },
+  "pg": {
+    "host": "localhost",
+    "port": 2345,
+    "url": "postgres://postgres:postgres@localhost/ckroma",
+    "database": "ckroma",
+    "password": "postgres",
+    "name": "pg",
+    "user": "postgres",
+    "connector": "postgresql"
+  }
+}

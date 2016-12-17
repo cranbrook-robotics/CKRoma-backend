@@ -1,0 +1,39 @@
+{
+  "name": "Member",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "surname": {
+      "type": "string",
+      "required": true
+    },
+    "givenName": {
+      "type": "string",
+      "required": true
+    },
+    "preferredName": {
+      "type": "string"
+    },
+    "email": {
+      "type": "string",
+      "required": true
+    },
+    "classYear": {
+      "type": "number",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {
+    "team": {
+      "type": "belongsTo",
+      "model": "Team",
+      "foreignKey": ""
+    }
+  },
+  "acls": [],
+  "methods": {}
+}
