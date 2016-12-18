@@ -12,7 +12,7 @@ module.exports = function(app) {
 	Organization.findOrCreate( {
 		where: orgWithName,
 		include: {divisions: {teams: {
-			members: ['surname', 'givenName', 'preferredName']
+			members: {}//['surname', 'givenName', 'preferredName']
 		}}}
 	}, orgWithName )
 	
@@ -36,16 +36,28 @@ module.exports = function(app) {
 		//console.log(createdDivisions);
 		var teamCreationPromises = [];
 		createdDivisions.forEach(function(d){
-			var teamsToMake = _.find(orgTemplate.divisions, _.pick(d, 'name')).teams;
-			teamsToMake = teamsToMake.map( (t) => _.pick(t, ['numericName', 'name']) );
+			let divisionTeams = _.find(orgTemplate.divisions, _.pick(d, 'name')).teams;
+			let teamsToMake = divisionTeams.map( (t) => _.pick(t, ['numericName', 'name']) );
 			console.log('Team to make for '+d.name, teamsToMake);
-			teamCreationPromises.push( d.teams.create(teamsToMake) );
+			let divisionTeamsPromise = d.teams.create(teamsToMake)
+			.catch(function(err){
+				console.log('problem creating one set of teams', err);
+			})
+			.then(function(createdTeams){
+				let memberPromises = [];
+				createdTeams.forEach(function(team){
+					let membersToMake = _.find(divisionTeams, _.pick(team, 'numericName')).members;
+					memberPromises.push( team.members.create(membersToMake) );
+				});
+				return Promise.all(memberPromises);
+			});
+			teamCreationPromises.push(divisionTeamsPromise);
 		});
 		return Promise.all(teamCreationPromises);
 	})
 
 	.catch(function(err){
-		console.log('problem creating teams');
+		console.log('problem creating teams', err);
 	})
 	.then(function(teamSets){
 		console.log('done making teamses');
