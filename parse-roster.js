@@ -9,7 +9,7 @@ function conciseTeamMember(m){
 	// First, trim the object down to just the following three properties.
 	// Then, omit preferredName if empty
 	//		(happens by default when no predicate is passed because of _.identity)
-	return _.pickBy( _.pick(m, ['surname', 'givenName', 'preferredName']) );
+	return _.pickBy( _.pick(m, ['surname', 'givenName', 'preferredName', 'classYear']) );
 }
 
 var parser = parseCSV({columns: true}, function(err, data){
