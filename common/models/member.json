@@ -18,8 +18,7 @@
       "type": "string"
     },
     "email": {
-      "type": "string",
-      "required": true
+      "type": "string"
     },
     "classYear": {
       "type": "number",
