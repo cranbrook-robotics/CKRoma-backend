@@ -22,7 +22,7 @@ module.exports = function(app) {
 	.then(function(params){
 		var org = params[0];
 		var orgData = org.toJSON();
-		console.log(JSON.stringify(orgData, null, 2));
+		// console.log(JSON.stringify(orgData, null, 2));
 		var divisionsToPut = _.differenceBy(orgTemplate.divisions, orgData.divisions, 'name');
 		divisionsToPut = divisionsToPut.map( (d) => _.pick(d, 'name') );
 		console.log('Create these divisions', divisionsToPut);
