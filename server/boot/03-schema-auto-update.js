@@ -2,6 +2,7 @@
 
 module.exports = function(app) {
 	var pg = app.dataSources.pg;
+	console.info('Checking database schema');
 	pg.isActual(null, function(err, actual){
 		if(err){
 			console.log('problem running isActual');

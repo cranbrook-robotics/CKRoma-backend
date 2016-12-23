@@ -9,6 +9,11 @@
     "name": {
       "type": "string",
       "required": true
+    },
+    "uri": {
+      "type": "string",
+      "required": true,
+      "defaultFn": "uuid"
     }
   },
   "validations": [],
