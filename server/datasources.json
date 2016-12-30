@@ -5,8 +5,8 @@
   },
   "pg": {
     "host": "localhost",
-    "port": 2345,
-    "url": "postgres://postgres:postgres@localhost/ckroma",
+    "port": 5432,
+    "url": "postgres://postgres:postgres@localhost/roma",
     "database": "ckroma",
     "password": "postgres",
     "name": "pg",
