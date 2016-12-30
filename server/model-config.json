@@ -47,5 +47,17 @@
   "Member": {
     "dataSource": "pg",
     "public": true
+  },
+  "Meet": {
+    "dataSource": "pg",
+    "public": true
+  },
+  "Venue": {
+    "dataSource": "pg",
+    "public": true
+  },
+  "Subdivision": {
+    "dataSource": "pg",
+    "public": true
   }
 }

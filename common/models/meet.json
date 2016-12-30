@@ -1,33 +1,42 @@
 {
-  "name": "Team",
+  "name": "Meet",
   "base": "PersistedModel",
   "idInjection": true,
   "options": {
     "validateUpsert": true
   },
   "properties": {
-    "numericName": {
-      "type": "string",
+    "date": {
+      "type": "date",
       "required": true
     },
     "name": {
+      "type": "string",
+      "required": true
+    },
+    "url": {
       "type": "string"
+    },
+    "isHome": {
+      "type": "boolean",
+      "required": true,
+      "default": false
     }
   },
   "validations": [],
   "relations": {
-    "members": {
-      "type": "hasMany",
-      "model": "Member",
-      "foreignKey": ""
-    },
-    "meets": {
+    "teams": {
       "type": "hasAndBelongsToMany",
-      "model": "Meet",
+      "model": "Team",
       "foreignKey": ""
     },
-    "subdivision": {
+    "venue": {
       "type": "belongsTo",
+      "model": "Venue",
+      "foreignKey": ""
+    },
+    "subdivisions": {
+      "type": "hasAndBelongsToMany",
       "model": "Subdivision",
       "foreignKey": ""
     }

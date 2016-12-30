@@ -10,6 +10,11 @@
       "type": "string",
       "required": true
     },
+    "uri": {
+      "type": "string",
+      "required": true, 
+      "defaultFn": "uuid"
+    },
     "gradeRange": {
       "type": "string"
     }
@@ -21,9 +26,9 @@
       "model": "Organization",
       "foreignKey": ""
     },
-    "teams": {
+    "subdivisions": {
       "type": "hasMany",
-      "model": "Team",
+      "model": "Subdivision",
       "foreignKey": ""
     }
   },

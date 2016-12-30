@@ -3,8 +3,8 @@
 module.exports = function(Team) {
 	var app = require('../../server/server');
 
-	Team.validatesPresenceOf('divisionId', {
-		message: 'Teams cannot be created without a parent Division.'
+	Team.validatesPresenceOf('subdivisionId', {
+		message: 'Teams cannot be created without a parent Subdivision.'
 	});
 
 	Team.observe('before delete', function(ctx, next){

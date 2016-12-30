@@ -1,34 +1,33 @@
 {
-  "name": "Team",
+  "name": "Subdivision",
   "base": "PersistedModel",
   "idInjection": true,
   "options": {
     "validateUpsert": true
   },
   "properties": {
-    "numericName": {
-      "type": "string",
-      "required": true
-    },
     "name": {
+      "type": "string"
+    },
+    "gradeRange": {
       "type": "string"
     }
   },
   "validations": [],
   "relations": {
-    "members": {
+    "division": {
+      "type": "belongsTo",
+      "model": "Division",
+      "foreignKey": ""
+    },
+    "teams": {
       "type": "hasMany",
-      "model": "Member",
+      "model": "Team",
       "foreignKey": ""
     },
     "meets": {
       "type": "hasAndBelongsToMany",
       "model": "Meet",
-      "foreignKey": ""
-    },
-    "subdivision": {
-      "type": "belongsTo",
-      "model": "Subdivision",
       "foreignKey": ""
     }
   },
