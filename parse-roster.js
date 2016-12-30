@@ -23,13 +23,19 @@ var parser = parseCSV({columns: true}, function(err, data){
 		};
 		org.divisions.forEach(function(division, i){
 			var divisionMembers = data.filter((m) => m.division === division.name);
-			var teams = _.uniq( divisionMembers.map((m) => m.team) );
-			division.teams = teams.map(function(teamName){
-				var teamMembers = divisionMembers.filter((m) => m.team === teamName);
-				return {
-					numericName: teamName,
-					members: teamMembers.map(conciseTeamMember)
-				};
+			var subdivisions = _.uniq( divisionMembers.map(m => m.subdivision) );
+			division.subdivisions = subdivisions.map( s => ({name: s}) );
+			division.subdivisions.forEach(subdivision => {
+				var subdivisionMembers = divisionMembers.filter( m => m.subdivision === subdivision.name );
+				if( !subdivision.name ) subdivision.name = null;
+				var teams = _.uniq( subdivisionMembers.map( m => m.team ) );
+				subdivision.teams = teams.map(teamId => {
+					var teamMembers = subdivisionMembers.filter( m => m.team === teamId );
+					return {
+						numericName: teamId,
+						members: teamMembers.map(conciseTeamMember)
+					};
+				});
 			});
 		});
 
